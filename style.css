@@ -131,7 +131,7 @@ header h1 {
     /* 초기 상태를 항상 보이도록 수정 */
     opacity: 1; /* 항상 보이도록 설정 */
     transform: translateY(0); /* 초기 위치 설정 */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* 속도 느리게 조정 */
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out; /* 속도 느리게 조정 */
 }
 
 .timeline::after {
@@ -202,7 +202,7 @@ header h1 {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* 속도 느리게 조정 */
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out; /* 속도 느리게 조정 */
 }
 
 .content.show {
@@ -252,15 +252,20 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+    /* 타임라인 선을 왼쪽으로 이동 */
     .timeline::after {
-        left: 20px; /* 타임라인 선의 위치를 왼쪽으로 이동 */
+        left: 20px;
     }
 
+    /* 타임라인 컨테이너를 100% 너비로 설정 */
     .container {
-        width: 100%; /* 타임라인 항목의 너비를 100%로 설정 */
-        padding-left: 60px; /* 왼쪽 여백을 충분히 주어 타임라인 선과 겹치지 않도록 함 */
-        padding-right: 20px; /* 오른쪽 여백을 줄임 */
-        margin-bottom: 20px; /* 각 타임라인 항목 사이에 간격 추가 */
+        width: 100%;
+        padding-left: 60px; /* 타임라인 선과 겹치지 않도록 충분한 여백 */
+        padding-right: 20px;
+        margin-bottom: 20px; /* 타임라인 항목 간 간격 추가 */
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
     }
 
     /* 모든 컨테이너를 왼쪽으로 정렬 */
@@ -269,6 +274,34 @@ footer {
         left: 0;
     }
 
-    /* 날짜 레이블을 왼쪽에 고정 */
+    /* 날짜 레이블을 왼쪽에 고정하고 텍스트 정렬을 왼쪽으로 설정 */
     .container.left .date,
-    .co
+    .container.right .date {
+        left: 40px;
+        right: auto;
+        text-align: left;
+        flex: 0 0 100px; /* 날짜 영역 고정 너비 */
+    }
+
+    /* 타임라인 점의 위치 조정 */
+    .container::after {
+        left: 15px;
+    }
+
+    /* 타임라인 내용 패딩 조정 */
+    .content {
+        padding: 15px 20px;
+        flex: 1; /* 콘텐츠 영역 확장 */
+    }
+
+    /* 수상 경력 중첩 리스트 스타일링 */
+    .award-list {
+        margin-left: 20px;
+    }
+
+    /* 텍스트 크기 조정 (필요시) */
+    .profile-info li,
+    .award-list li {
+        font-size: 0.9rem;
+    }
+}

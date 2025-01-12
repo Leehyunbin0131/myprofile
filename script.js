@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             github: 'https://github.com/Leehyunbin0131/gunjuck'
         },
         {
-            date: '2025.1.12',
+            date: '2025.01.12',
             title: '웹 포트폴리오 구축',
             description: '개인 웹 포트폴리오 사이트 구축 및 배포 완료.',
             image: 'images/myprofile.png',
@@ -107,4 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
         techObserver.observe(bar);
     });
 
+    // 로드맵 자체에 대한 IntersectionObserver 제거
+    // .timeline은 항상 보이므로 더 이상 필요하지 않습니다.
 });
