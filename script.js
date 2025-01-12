@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: '2025.01.08',
             title: '군죽 프로젝트',
             description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
+            image: 'images/gunjuck.png',
             github: 'https://github.com/Leehyunbin0131/gunjuck'
         },
         {
@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         container.classList.add('container');
         container.classList.add(index % 2 === 0 ? 'left' : 'right');
 
-        // 날짜 요소 추가
+        const content = document.createElement('div');
+        content.classList.add('content');
+
+        // 날짜 요소를 content 내부로 이동
         const date = document.createElement('div');
         date.classList.add('date');
         date.textContent = project.date;
-        container.appendChild(date);
-
-        const content = document.createElement('div');
-        content.classList.add('content');
+        content.appendChild(date); // 날짜를 콘텐츠 상단에 추가
 
         const img = document.createElement('img');
         img.src = project.image;

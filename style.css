@@ -180,26 +180,52 @@ header h1 {
 }
 
 .container .date {
+    /* 기존 스타일 제거 */
+}
+
+/* PC 환경과 모바일 환경 모두에서 날짜 위치 설정 */
+.container.left .content .date {
     position: absolute;
-    top: 15px;
-    width: 100px;
-    text-align: center;
+    top: 10px;
+    right: 10px;
     font-size: 0.9rem;
-    color: #555;
+    color: #fff;
+    background-color: #007aff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    z-index: 2;
 }
 
-.container.left .date {
-    right: -130px;
+.container.right .content .date {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #007aff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    z-index: 2;
 }
 
-.container.right .date {
-    left: -130px;
+/* 날짜 애니메이션 추가 (선택 사항) */
+.container .content .date {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.content.show .date {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .content {
     padding: 20px 30px;
     background-color: white;
-    position: relative;
+    position: relative; /* 날짜의 절대 위치를 위한 설정 */
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     opacity: 0;
@@ -253,6 +279,7 @@ footer {
     box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
 }
 
+/* 모바일 환경용 미디어 쿼리 */
 @media screen and (max-width: 768px) {
     /* 타임라인 선을 왼쪽으로 이동 */
     .timeline::after {
@@ -262,13 +289,10 @@ footer {
     /* 타임라인 컨테이너를 100% 너비로 설정 */
     .container {
         width: 100%;
-        padding-left: 60px; /* 타임라인 선과 겹치지 않도록 충분한 여백 */
+        padding-left: 20px; /* 타임라인 선과 겹치지 않도록 여백 조정 */
         padding-right: 20px;
         margin-bottom: 30px; /* 타임라인 항목 간 간격 추가 */
-        display: flex;
-        flex-direction: column; /* 수직 배치 */
-        align-items: flex-start;
-        position: relative; /* ::after 위치 조정을 위해 */
+        position: relative;
     }
 
     /* 모든 컨테이너를 왼쪽으로 정렬 */
@@ -277,30 +301,21 @@ footer {
         left: 0;
     }
 
-    /* 날짜 레이블을 상단에 배치 */
-    .container .date {
-        position: static; /* 절대 위치 해제 */
-        margin-bottom: 10px; /* 날짜와 콘텐츠 간 간격 */
-        text-align: left;
-        font-size: 0.9rem;
-        color: #555;
-        background-color: #fff; /* 배경 추가 */
-        padding: 2px 6px;
-        border-radius: 4px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* 약간의 그림자 추가 */
-    }
-
-    /* 타임라인 점의 위치 조정 */
+    /* .container::after 제거 */
     .container::after {
-        left: 15px; /* 타임라인 선과 맞춤 */
-        top: 10px; /* 콘텐츠 상단과 간격 조정 */
+        display: none;
     }
 
-    /* 타임라인 내용 패딩 조정 */
+    /* 콘텐츠 패딩과 너비 조정 */
     .content {
         padding: 15px 20px;
-        margin-left: 40px; /* 타임라인 선과 겹치지 않도록 여백 */
-        width: calc(100% - 40px); /* 남은 너비 조정 */
+        width: 100%; /* 전체 너비 사용 */
+        box-sizing: border-box;
+    }
+
+    /* 콘텐츠와 점 간의 간격 조정 */
+    .content {
+        margin-top: 10px;
     }
 
     /* 수상 경력 중첩 리스트 스타일링 */
@@ -312,5 +327,11 @@ footer {
     .profile-info li,
     .award-list li {
         font-size: 0.9rem;
+    }
+
+    /* 타임라인 선 스타일 조정 (필요 시) */
+    .timeline::after {
+        width: 4px;
+        background-color: #007aff;
     }
 }
