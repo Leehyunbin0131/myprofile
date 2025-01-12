@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const projects = [
         {
             date: '2025.01.08',
-            title: '군적 프로젝트',
+            title: '군죽 프로젝트',
             description: '군죽 웹 애플리케이션 개발 완료.',
             image: 'images/gunjuck.png',
             github: 'https://github.com/Leehyunbin0131/gunjuck'

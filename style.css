@@ -1,6 +1,6 @@
 /* style.css */
 
-/* CSS 리셋 */
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
@@ -88,7 +88,16 @@ header h1 {
 .profile-info strong {
     color: #007aff;
 }
+.profile-info a {
+    color: #007aff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
+.profile-info a:hover {
+    color: #005bb5;
+    text-decoration: underline;
+}
 /* 수상 경력 중첩 리스트 스타일링 */
 .award-list {
     list-style: disc inside;
@@ -142,10 +151,11 @@ header h1 {
     background-color: #007aff;
     top: 0;
     bottom: 0;
-    left: 50%;
-    margin-left: -2px;
-    -webkit-background-color: #007aff; /* 사파리용 */
-    background-color: #007aff;
+    left: 50%; /* 중앙 정렬 */
+    transform: translateX(-50%); /* 중앙 정렬 */
+    /* 벤더 프리픽스 추가 (사파리 호환성) */
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .container {
@@ -164,33 +174,46 @@ header h1 {
 }
 
 .container::after {
+    /* PC 환경에서 마커를 중앙 선에 정확히 정렬 */
     content: '';
     position: absolute;
     width: 25px;
     height: 25px;
-    right: -13px;
     background-color: white;
     border: 4px solid #007aff;
     top: 15px;
     border-radius: 50%;
     z-index: 1;
-    -webkit-border-radius: 50%; /* 사파리용 */
-    border-radius: 50%;
+    
+    /* 왼쪽 컨테이너의 마커는 타임라인 선의 오른쪽 가장자리에 위치 */
+    /* 오른쪽 컨테이너의 마커는 타임라인 선의 왼쪽 가장자리에 위치 */
+    left: 100%; /* 왼쪽 컨테이너는 100% 왼쪽 */
+    transform: translateX(-50%); /* 중앙 정렬 */
+    /* 벤더 프리픽스 추가 (사파리 호환성) */
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .container.right::after {
-    left: -13px;
+    left: 0; /* 오른쪽 컨테이너는 0% 왼쪽 */
+    transform: translateX(-50%); /* 중앙 정렬 */
+    /* 벤더 프리픽스 추가 (사파리 호환성) */
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
-.container .date {
-    /* 기존 스타일 제거 */
+/* 모바일 환경에서 마커(동그라미) 제거 */
+@media screen and (max-width: 768px) {
+    .container::after {
+        display: none; /* 동그라미 마커 제거 */
+    }
 }
 
 /* 날짜 위치 및 스타일링 (모바일 및 PC 공통) */
-.container.left .content .date {
+.container.left .content .date,
+.container.right .content .date {
     position: absolute;
     top: 10px;
-    right: 10px;
     font-size: 0.9rem;
     color: #fff;
     background-color: #007aff;
@@ -204,21 +227,12 @@ header h1 {
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-.container.right .content .date {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 0.9rem;
-    color: #fff;
-    background-color: #007aff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    z-index: 2;
+.container.left .content .date {
+    right: 10px;
+}
 
-    /* 벤더 프리픽스 추가 */
-    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+.container.right .content .date {
+    left: 10px;
 }
 
 /* 날짜 애니메이션 추가 (선택 사항) */
@@ -295,54 +309,48 @@ footer {
     /* 타임라인 선을 왼쪽으로 이동 */
     .timeline::after {
         left: 20px;
+        transform: none; /* 중앙 정렬 제거 */
     }
 
     /* 타임라인 컨테이너를 100% 너비로 설정 */
     .container {
         width: 100%;
-        padding-left: 20px; /* 타임라인 선과 겹치지 않도록 여백 조정 */
+        padding-left: 40px; /* 타임라인 선 공간 확보 */
         padding-right: 20px;
-        margin-bottom: 30px; /* 타임라인 항목 간 간격 추가 */
+        margin-bottom: 30px; /* 항목 간 간격 */
         position: relative;
+        display: flex;
+        align-items: flex-start;
     }
 
-    /* 모든 컨테이너를 왼쪽으로 정렬 */
+    /* 모든 컨테이너를 왼쪽으로 정렬 (좌우 번갈아 배치 제거) */
     .container.left,
     .container.right {
         left: 0;
     }
 
-    /* .container::after 제거 */
-    .container::after {
-        display: none;
-    }
-
-    /* 콘텐츠 패딩과 너비 조정 */
+    /* 콘텐츠 박스의 레이아웃 조정 */
     .content {
+        flex: 1;
         padding: 15px 20px;
-        width: 100%; /* 전체 너비 사용 */
+        width: 100%;
         box-sizing: border-box;
-    }
-
-    /* 콘텐츠와 점 간의 간격 조정 */
-    .content {
         margin-top: 10px;
     }
 
-    /* 수상 경력 중첩 리스트 스타일링 */
-    .award-list {
-        margin-left: 20px;
+    /* 날짜의 절대 위치 제거하고 상단에 표시 */
+    .container.left .content .date,
+    .container.right .content .date {
+        position: static;
+        margin-bottom: 10px;
     }
 
-    /* 텍스트 크기 조정 (필요시) */
-    .profile-info li,
-    .award-list li {
-        font-size: 0.9rem;
+    /* 모든 날짜를 오른쪽에 배치 */
+    .container.left .content .date,
+    .container.right .content .date {
+        text-align: left;
     }
 
-    /* 타임라인 선 스타일 조정 (필요 시) */
-    .timeline::after {
-        width: 4px;
-        background-color: #007aff;
-    }
+    /* 타임라인 선 스타일 조정 (이미 중앙에서 왼쪽으로 이동했으므로 추가 스타일 없음) */
+    /* 마커(동그라미)는 이미 제거됨 */
 }
