@@ -1,83 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const projects = [
         {
-            date: '2025.01.11',
-            title: '군적',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		{
-            date: '2025.01.11',
+            date: '2025.01.08',
             title: '군죽 프로젝트',
             description: '군죽 웹 애플리케이션 개발 완료.',
             image: 'images/gunjuck.png', // 실제 이미지 경로 확인
             github: 'https://github.com/Leehyunbin0131/gunjuck'
         },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
+        {
+            date: '2025.1.12',
+            title: '웹 포트폴리오 구축',
+            description: '개인 웹 포트폴리오 사이트 구축 및 배포 완료.',
+            image: 'images/myprofile.png',
+            github: 'https://github.com/Leehyunbin0131/myprofile'
         },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		{
-            date: '2025.01.11',
-            title: '군죽 프로젝트',
-            description: '군죽 웹 애플리케이션 개발 완료.',
-            image: 'images/gunjuck.png', // 실제 이미지 경로 확인
-            github: 'https://github.com/Leehyunbin0131/gunjuck'
-        },
-		
         // 추가 프로젝트는 여기에 객체 형태로 추가
     ];
 
@@ -170,4 +106,5 @@ document.addEventListener('DOMContentLoaded', () => {
     techBars.forEach(bar => {
         techObserver.observe(bar);
     });
+
 });

@@ -119,7 +119,7 @@ header h1 {
     height: 20px;
     background-color: #007aff;
     border-radius: 10px;
-    transition: width 1.2s ease-out; 
+    transition: width 2s ease-out; /* 속도 느리게 조정 */
 }
 
 /* 로드맵 섹션 스타일링 */
@@ -128,9 +128,10 @@ header h1 {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px 0;
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+    /* 초기 상태를 항상 보이도록 수정 */
+    opacity: 1; /* 항상 보이도록 설정 */
+    transform: translateY(0); /* 초기 위치 설정 */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* 속도 느리게 조정 */
 }
 
 .timeline::after {
@@ -252,41 +253,22 @@ footer {
 
 @media screen and (max-width: 768px) {
     .timeline::after {
-        left: 20px;
+        left: 20px; /* 타임라인 선의 위치를 왼쪽으로 이동 */
     }
 
     .container {
-        width: 100%;
-        padding-left: 60px;
-        padding-right: 25px;
+        width: 100%; /* 타임라인 항목의 너비를 100%로 설정 */
+        padding-left: 60px; /* 왼쪽 여백을 충분히 주어 타임라인 선과 겹치지 않도록 함 */
+        padding-right: 20px; /* 오른쪽 여백을 줄임 */
+        margin-bottom: 20px; /* 각 타임라인 항목 사이에 간격 추가 */
     }
 
+    /* 모든 컨테이너를 왼쪽으로 정렬 */
+    .container.left,
     .container.right {
-        left: 0%;
+        left: 0;
     }
 
-    .container::after {
-        left: 18px;
-    }
-
+    /* 날짜 레이블을 왼쪽에 고정 */
     .container.left .date,
-    .container.right .date {
-        left: 40px;
-        right: auto;
-    }
-
-    /* .timeline.hidden 클래스 관련 스타일을 제거했습니다. */
-
-    /* 소개 섹션 반응형 스타일 */
-    .about-container {
-        flex-direction: column;
-    }
-
-    .about-photo {
-        margin-bottom: 20px;
-    }
-
-    .about-info {
-        padding: 0;
-    }
-}
+    .co
