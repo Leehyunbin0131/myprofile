@@ -1,6 +1,6 @@
 /* style.css */
 
-/* Reset CSS */
+/* CSS 리셋 */
 * {
     margin: 0;
     padding: 0;
@@ -121,7 +121,7 @@ header h1 {
     height: 20px;
     background-color: #007aff;
     border-radius: 10px;
-    transition: width 2s ease-out; /* 속도 느리게 조정 */
+    transition: width 2s ease-out;
 }
 
 /* 로드맵 섹션 스타일링 */
@@ -130,10 +130,9 @@ header h1 {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px 0;
-    /* 초기 상태를 항상 보이도록 수정 */
-    opacity: 1; /* 항상 보이도록 설정 */
-    transform: translateY(0); /* 초기 위치 설정 */
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out; /* 속도 느리게 조정 */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
 .timeline::after {
@@ -145,6 +144,8 @@ header h1 {
     bottom: 0;
     left: 50%;
     margin-left: -2px;
+    -webkit-background-color: #007aff; /* 사파리용 */
+    background-color: #007aff;
 }
 
 .container {
@@ -173,6 +174,8 @@ header h1 {
     top: 15px;
     border-radius: 50%;
     z-index: 1;
+    -webkit-border-radius: 50%; /* 사파리용 */
+    border-radius: 50%;
 }
 
 .container.right::after {
@@ -183,7 +186,7 @@ header h1 {
     /* 기존 스타일 제거 */
 }
 
-/* PC 환경과 모바일 환경 모두에서 날짜 위치 설정 */
+/* 날짜 위치 및 스타일링 (모바일 및 PC 공통) */
 .container.left .content .date {
     position: absolute;
     top: 10px;
@@ -195,6 +198,10 @@ header h1 {
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     z-index: 2;
+
+    /* 벤더 프리픽스 추가 */
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .container.right .content .date {
@@ -208,6 +215,10 @@ header h1 {
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     z-index: 2;
+
+    /* 벤더 프리픽스 추가 */
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 /* 날짜 애니메이션 추가 (선택 사항) */
@@ -225,12 +236,12 @@ header h1 {
 .content {
     padding: 20px 30px;
     background-color: white;
-    position: relative; /* 날짜의 절대 위치를 위한 설정 */
+    position: relative;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out; /* 속도 느리게 조정 */
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
 .content.show {
