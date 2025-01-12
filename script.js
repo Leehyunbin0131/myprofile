@@ -1,3 +1,5 @@
+// script.js
+
 document.addEventListener('DOMContentLoaded', () => {
     const projects = [
         {
@@ -106,7 +108,4 @@ document.addEventListener('DOMContentLoaded', () => {
     techBars.forEach(bar => {
         techObserver.observe(bar);
     });
-
-    // 로드맵 자체에 대한 IntersectionObserver 제거
-    // .timeline은 항상 보이므로 더 이상 필요하지 않습니다.
 });
